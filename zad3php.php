@@ -2,144 +2,157 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Zadania PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-
+    
 <?php
 
-$X = 5;   
-$Z = 1;   
-$K = 3;   
-$N = 8;   
-
-
-echo "1. 10 kolejnych liczb całkowitych od 1:<br>";
 for ($i = 1; $i <= 10; $i++) {
-    echo $i . "<br>";
+    echo $i . " ";
 }
 
-echo "<br>2. 10 kolejnych liczb całkowitych od 10 malejąco:<br>";
+echo "<br>";
+
 for ($i = 10; $i >= 1; $i--) {
-    echo $i . "<br>";
+    echo $i . " ";
 }
 
-echo "<br>3. Suma 10 kolejnych liczb całkowitych od 1:<br>";
-$suma1 = 0;
+echo "<br>";
+
+$suma = 0;
+
 for ($i = 1; $i <= 10; $i++) {
-    $suma1 += $i;
+    $suma += $i;
 }
-echo "Suma: " . $suma1 . "<br>";
 
-echo "<br>4. 10 kolejnych parzystych liczb od 2:<br>";
+echo $suma . "<br>";
+
+for ($i = 2; $i <= 20; $i += 2) {
+    echo $i . " ";
+}
+
+echo "<br>";
+
+$x = 12;
+$y = 100;
+$kwota = 0;
+
+for ($i = 1; $i <= $x; $i++) {
+    $kwota += $y;
+    $kwota *= 1.08;
+}
+
+echo "Zgromadzona kwota: " . $kwota . " zł<br>";
+
+$a = 5;
+$d = 10;
+$n = 100;
+$ostatni = $a + ($n - 1) * $d;
+$suma = $n * ($a + $ostatni) / 2;
+
+echo "Suma ciągu: " . $suma . "<br>";
+
+$suma = 0;
+
 for ($i = 1; $i <= 10; $i++) {
-    echo ($i * 2) . "<br>";
+    $suma += $i * $i;
 }
 
-echo "<br>5. Oszczędności pracownika (X miesięcy, Y zł, 8% odsetek co miesiąc):<br>";
-$zgromadzona_kwota = 0;
-$miesiace = 0;
-while ($miesiace < $X) {
-    $zgromadzona_kwota += $Y;
-    $zgromadzona_kwota += $zgromadzona_kwota * 0.08;
-    $miesiace++;
-}
-echo "Zgromadzona kwota po " . $X . " miesiącach: " . $zgromadzona_kwota . " zł<br>";
+echo "Liczba cegieł: " . $suma . "<br>";
 
-echo "<br>6. Suma ciągu arytmetycznego (100 elementów, start=5, różnica=10):<br>";
-$suma_ciagu = 0;
-$aktualny_element = 5;
-for ($i = 0; $i < 100; $i++) {
-    $suma_ciagu += $aktualny_element;
-    $aktualny_element += 10;
-}
-echo "Suma: " . $suma_ciagu . "<br>";
+$x = 20;
+$y = 5;
+$z = 2;
 
-echo "<br>7. Ilość cegieł w piramidzie o podstawie 10 x 10:<br>";
-$cegly_piramida = 0;
-for ($bok = 10; $bok >= 1; $bok--) {
-    $cegly_piramida += ($bok * $bok);
-}
-echo "Suma cegieł: " . $cegly_piramida . "<br>";
+$suma = 0;
+$rząd = $x;
 
-echo "<br>8. Ilość cegieł w ścianie (podstawa X, wysokość Y, zmniejszanie o Z):<br>";
-$cegly_sciana = 0;
-$aktualny_rzad_szerokosc = $X;
-for ($r = 0; $r < $Y; $r++) {
-    if ($aktualny_rzad_szerokosc <= 0) {
-        break; 
+for ($i = 1; $i <= $y; $i++) {
+    $suma += $rząd;
+    $rząd -= $z;
+}
+
+echo "Liczba cegieł w ścianie: " . $suma . "<br>";
+
+$k = 2;
+
+$waga = $suma * $k;
+
+echo "Waga ściany: " . $waga . " kg<br>";
+
+$a = 20;
+$b = 5;
+$dzialanie = "/";
+
+if ($dzialanie == "+") {
+    echo "Wynik: " . ($a + $b) . "<br>";
+} elseif ($dzialanie == "-") {
+    echo "Wynik: " . ($a - $b) . "<br>";
+} elseif ($dzialanie == "*") {
+    echo "Wynik: " . ($a * $b) . "<br>";
+} elseif ($dzialanie == "/") {
+    if ($b == 0) {
+        echo "Nie można dzielić przez zero.<br>";
+    } else {
+        echo "Wynik: " . ($a / $b) . "<br>";
     }
-    $cegly_sciana += $aktualny_rzad_szerokosc;
-    $aktualny_rzad_szerokosc -= $Z;
-}
-echo "Ilość cegieł: " . $cegly_sciana . "<br>";
-
-echo "<br>9. Waga ściany z podpunktu 8 (jedna cegła = K kg):<br>";
-$waga_sciany = $cegly_sciana * $K;
-echo "Waga ściany: " . $waga_sciany . " kg<br>";
-
-echo "<br>10. Symulator prostego kalkulatora (Przykładowe działanie: 12 * 4):<br>";
-$a = 12;
-$b = 4;
-$operator = '*'; 
-$wynik_kalkulatora = 0;
-if ($operator == '+') $wynik_kalkulatora = $a + $b;
-elseif ($operator == '-') $wynik_kalkulatora = $a - $b;
-elseif ($operator == '*') $wynik_kalkulatora = $a * $b;
-elseif ($operator == '/') {
-    if ($b != 0) $wynik_kalkulatora = $a / $b;
-    else $wynik_kalkulatora = "Błąd: Dzielenie przez zero";
-}
-echo "Wynik " . $a . " " . $operator . " " . $b . " = " . $wynik_kalkulatora . "<br>";
-
-echo "<br>11. Ciąg arytmetyczny N elementów (start X, różnica Y):<br>";
-$element_c = $X;
-for ($i = 0; $i < $N; $i++) {
-    echo $element_c . "<br>";
-    $element_c += $Y;
+} else {
+    echo "Nieprawidłowe działanie.<br>";
 }
 
-echo "<br>12. Pętla sumująca dwie liczby, aż suma wyniesie 0 (Symulacja tablicy wejściowej):<br>";
+$n = 10;
+$x = 2;
+$y = 3;
 
-$pary_liczb = [
-    [5, -3],
-    [10, -10], 
-    [4, 4]     
-];
-$indeks = 0;
+for ($i = 0; $i < $n; $i++) {
+    echo ($x + $i * $y) . " ";
+}
+
+echo "<br>";
+
 do {
-    $l1 = $pary_liczb[$indeks][0];
-    $l2 = $pary_liczb[$indeks][1];
-    $suma_par = $l1 + $l2;
-    echo "Pobrane liczby: " . $l1 . " i " . $l2 . ". Suma = " . $suma_par . "<br>";
-    $indeks++;
-} while ($suma_par != 0 && $indeks < count($pary_liczb));
+    $a = rand(-10, 10);
+    $b = rand(-10, 10);
+    $suma = $a + $b;
 
-echo "<br>13. Silnia z wprowadzonej liczby X:<br>";
+    echo $a . " + " . $b . " = " . $suma . "<br>";
+
+} while ($suma != 0);
+
+$n = 5;
 $silnia = 1;
-$licznik_silnia = 1;
-while ($licznik_silnia <= $X) {
-    $silnia *= $licznik_silnia;
-    $licznik_silnia++;
-}
-echo "Silnia z " . $X . " wynosi: " . $silnia . "<br>";
 
-echo "<br>14. Ciąg N liczb, gdzie każda kolejna jest kwadratem poprzedniej (start X):<br>";
-$liczba_kwadrat = $X;
-for ($i = 0; $i < $N; $i++) {
-    echo $liczba_kwadrat . "<br>";
-    $liczba_kwadrat = $liczba_kwadrat * $liczba_kwadrat;
+for ($i = 1; $i <= $n; $i++) {
+    $silnia *= $i;
 }
 
-echo "<br>15. Suma oraz średnia z 10 losowych liczb z przedziału &lt;50,100&gt;:<br>";
-$suma_losowych = 0;
-for ($i = 0; $i < 10; $i++) {
-    $losowa = rand(50, 100);
-    $suma_losowych += $losowa;
+echo "Silnia: " . $silnia . "<br>";
+
+$n = 6;
+$x = 2;
+
+for ($i = 1; $i <= $n; $i++) {
+    echo $x . " ";
+    $x = $x * $x;
 }
-$srednia_losowych = $suma_losowych / 10;
-echo "Suma: " . $suma_losowych . "<br>";
-echo "Średnia: " . $srednia_losowych . "<br>";
+
+echo "<br>";
+
+$suma = 0;
+
+for ($i = 1; $i <= 10; $i++) {
+    $liczba = rand(50, 100);
+    echo $liczba . " ";
+    $suma += $liczba;
+}
+
+$srednia = $suma / 10;
+
+echo "<br>";
+echo "Suma: " . $suma . "<br>";
+echo "Średnia: " . $srednia;
 
 ?>
 
